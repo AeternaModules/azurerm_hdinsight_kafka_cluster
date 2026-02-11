@@ -23,7 +23,7 @@ resource "azurerm_hdinsight_kafka_cluster" "hdinsight_kafka_clusters" {
     head_node {
       password = each.value.roles.head_node.password
       dynamic "script_actions" {
-        for_each = each.value.roles.head_node.script_actions != null ? [each.value.roles.head_node.script_actions] : []
+        for_each = each.value.roles.head_node.script_actions != null ? each.value.roles.head_node.script_actions : []
         content {
           name       = script_actions.value.name
           parameters = script_actions.value.parameters
@@ -41,7 +41,7 @@ resource "azurerm_hdinsight_kafka_cluster" "hdinsight_kafka_clusters" {
       content {
         password = kafka_management_node.value.password
         dynamic "script_actions" {
-          for_each = kafka_management_node.value.script_actions != null ? [kafka_management_node.value.script_actions] : []
+          for_each = kafka_management_node.value.script_actions != null ? kafka_management_node.value.script_actions : []
           content {
             name       = script_actions.value.name
             parameters = script_actions.value.parameters
@@ -58,7 +58,7 @@ resource "azurerm_hdinsight_kafka_cluster" "hdinsight_kafka_clusters" {
       number_of_disks_per_node = each.value.roles.worker_node.number_of_disks_per_node
       password                 = each.value.roles.worker_node.password
       dynamic "script_actions" {
-        for_each = each.value.roles.worker_node.script_actions != null ? [each.value.roles.worker_node.script_actions] : []
+        for_each = each.value.roles.worker_node.script_actions != null ? each.value.roles.worker_node.script_actions : []
         content {
           name       = script_actions.value.name
           parameters = script_actions.value.parameters
@@ -75,7 +75,7 @@ resource "azurerm_hdinsight_kafka_cluster" "hdinsight_kafka_clusters" {
     zookeeper_node {
       password = each.value.roles.zookeeper_node.password
       dynamic "script_actions" {
-        for_each = each.value.roles.zookeeper_node.script_actions != null ? [each.value.roles.zookeeper_node.script_actions] : []
+        for_each = each.value.roles.zookeeper_node.script_actions != null ? each.value.roles.zookeeper_node.script_actions : []
         content {
           name       = script_actions.value.name
           parameters = script_actions.value.parameters
