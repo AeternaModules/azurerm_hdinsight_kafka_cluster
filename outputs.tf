@@ -1,113 +1,108 @@
-output "hdinsight_kafka_clusters" {
-  description = "All hdinsight_kafka_cluster resources"
-  value       = azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters
-  sensitive   = true
-}
 output "hdinsight_kafka_clusters_cluster_version" {
-  description = "List of cluster_version values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.cluster_version]
+  description = "Map of cluster_version values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.cluster_version }
 }
 output "hdinsight_kafka_clusters_component_version" {
-  description = "List of component_version values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.component_version]
+  description = "Map of component_version values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.component_version }
 }
 output "hdinsight_kafka_clusters_compute_isolation" {
-  description = "List of compute_isolation values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.compute_isolation]
+  description = "Map of compute_isolation values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.compute_isolation }
 }
 output "hdinsight_kafka_clusters_disk_encryption" {
-  description = "List of disk_encryption values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.disk_encryption]
+  description = "Map of disk_encryption values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.disk_encryption }
 }
 output "hdinsight_kafka_clusters_encryption_in_transit_enabled" {
-  description = "List of encryption_in_transit_enabled values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.encryption_in_transit_enabled]
+  description = "Map of encryption_in_transit_enabled values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.encryption_in_transit_enabled }
 }
 output "hdinsight_kafka_clusters_extension" {
-  description = "List of extension values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.extension]
+  description = "Map of extension values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.extension }
   sensitive   = true
 }
 output "hdinsight_kafka_clusters_gateway" {
-  description = "List of gateway values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.gateway]
+  description = "Map of gateway values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.gateway }
   sensitive   = true
 }
 output "hdinsight_kafka_clusters_https_endpoint" {
-  description = "List of https_endpoint values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.https_endpoint]
+  description = "Map of https_endpoint values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.https_endpoint }
 }
 output "hdinsight_kafka_clusters_kafka_rest_proxy_endpoint" {
-  description = "List of kafka_rest_proxy_endpoint values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.kafka_rest_proxy_endpoint]
+  description = "Map of kafka_rest_proxy_endpoint values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.kafka_rest_proxy_endpoint }
 }
 output "hdinsight_kafka_clusters_location" {
-  description = "List of location values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.location]
+  description = "Map of location values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.location }
 }
 output "hdinsight_kafka_clusters_metastores" {
-  description = "List of metastores values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.metastores]
+  description = "Map of metastores values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.metastores }
   sensitive   = true
 }
 output "hdinsight_kafka_clusters_monitor" {
-  description = "List of monitor values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.monitor]
+  description = "Map of monitor values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.monitor }
   sensitive   = true
 }
 output "hdinsight_kafka_clusters_name" {
-  description = "List of name values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.name]
+  description = "Map of name values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.name }
 }
 output "hdinsight_kafka_clusters_network" {
-  description = "List of network values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.network]
+  description = "Map of network values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.network }
 }
 output "hdinsight_kafka_clusters_private_link_configuration" {
-  description = "List of private_link_configuration values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.private_link_configuration]
+  description = "Map of private_link_configuration values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.private_link_configuration }
 }
 output "hdinsight_kafka_clusters_resource_group_name" {
-  description = "List of resource_group_name values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.resource_group_name]
+  description = "Map of resource_group_name values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.resource_group_name }
 }
 output "hdinsight_kafka_clusters_rest_proxy" {
-  description = "List of rest_proxy values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.rest_proxy]
+  description = "Map of rest_proxy values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.rest_proxy }
 }
 output "hdinsight_kafka_clusters_roles" {
-  description = "List of roles values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.roles]
+  description = "Map of roles values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.roles }
   sensitive   = true
 }
 output "hdinsight_kafka_clusters_security_profile" {
-  description = "List of security_profile values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.security_profile]
+  description = "Map of security_profile values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.security_profile }
   sensitive   = true
 }
 output "hdinsight_kafka_clusters_ssh_endpoint" {
-  description = "List of ssh_endpoint values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.ssh_endpoint]
+  description = "Map of ssh_endpoint values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.ssh_endpoint }
 }
 output "hdinsight_kafka_clusters_storage_account" {
-  description = "List of storage_account values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.storage_account]
+  description = "Map of storage_account values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.storage_account }
   sensitive   = true
 }
 output "hdinsight_kafka_clusters_storage_account_gen2" {
-  description = "List of storage_account_gen2 values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.storage_account_gen2]
+  description = "Map of storage_account_gen2 values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.storage_account_gen2 }
 }
 output "hdinsight_kafka_clusters_tags" {
-  description = "List of tags values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.tags]
+  description = "Map of tags values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.tags }
 }
 output "hdinsight_kafka_clusters_tier" {
-  description = "List of tier values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.tier]
+  description = "Map of tier values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.tier }
 }
 output "hdinsight_kafka_clusters_tls_min_version" {
-  description = "List of tls_min_version values across all hdinsight_kafka_clusters"
-  value       = [for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : v.tls_min_version]
+  description = "Map of tls_min_version values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.tls_min_version }
 }
 
