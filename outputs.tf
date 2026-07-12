@@ -1,3 +1,7 @@
+output "hdinsight_kafka_clusters_id" {
+  description = "Map of id values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
+  value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.id }
+}
 output "hdinsight_kafka_clusters_cluster_version" {
   description = "Map of cluster_version values across all hdinsight_kafka_clusters, keyed the same as var.hdinsight_kafka_clusters"
   value       = { for k, v in azurerm_hdinsight_kafka_cluster.hdinsight_kafka_clusters : k => v.cluster_version }
