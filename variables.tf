@@ -288,7 +288,7 @@ EOT
   validation {
     condition = alltrue([
       for k, v in var.hdinsight_kafka_clusters : (
-        v.roles.kafka_management_node.script_actions == null || (length(v.roles.kafka_management_node.script_actions) >= 1)
+        v.roles.kafka_management_node == null || (v.roles.kafka_management_node.script_actions == null || (length(v.roles.kafka_management_node.script_actions) >= 1))
       )
     ])
     error_message = "Each script_actions list must contain at least 1 items"
