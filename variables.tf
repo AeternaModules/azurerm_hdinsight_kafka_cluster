@@ -202,12 +202,12 @@ EOT
       compute_isolation_enabled = optional(bool) # Default: false
       host_sku                  = optional(string)
     }))
-    disk_encryption = optional(object({
+    disk_encryption = optional(list(object({
       encryption_algorithm          = optional(string)
       encryption_at_host_enabled    = optional(bool)
       key_vault_key_id              = optional(string)
       key_vault_managed_identity_id = optional(string)
-    }))
+    })))
     extension = optional(object({
       log_analytics_workspace_id = string
       primary_key                = string
@@ -264,12 +264,12 @@ EOT
       ldaps_urls              = set(string)
       msi_resource_id         = string
     }))
-    storage_account = optional(object({
+    storage_account = optional(list(object({
       is_default           = bool
       storage_account_key  = string
       storage_container_id = string
       storage_resource_id  = optional(string)
-    }))
+    })))
     storage_account_gen2 = optional(object({
       filesystem_id                = string
       is_default                   = bool
@@ -309,22 +309,6 @@ EOT
     ])
     error_message = "Each script_actions list must contain at least 1 items"
   }
-  validation {
-    condition = alltrue([
-      for k, v in var.hdinsight_kafka_clusters : (
-        v.rest_proxy == null || (can(regex("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", v.rest_proxy.security_group_id)))
-      )
-    ])
-    error_message = "must be a valid UUID"
-  }
-  validation {
-    condition = alltrue([
-      for k, v in var.hdinsight_kafka_clusters : (
-        v.rest_proxy == null || (length(v.rest_proxy.security_group_name) > 0)
-      )
-    ])
-    error_message = "must not be empty"
-  }
   # --- Unconfirmed validation candidates, derived from azurerm_hdinsight_kafka_cluster's provider source ---
   # Not auto-enabled: either a bespoke provider validator we can't safely translate,
   # or a path that crosses a list-typed block (needs its own for_each wrapping).
@@ -345,6 +329,12 @@ EOT
   #   source:    [from resourcegroups.ValidateName] !matched
   # path: location
   #   source:    location.EnhancedValidate: no recognizable `if ... { errors = append(...) }` pattern - read it by hand
+  # path: rest_proxy.security_group_id
+  #   condition: can(regex("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", value))
+  #   message:   must be a valid UUID
+  # path: rest_proxy.security_group_name
+  #   condition: length(value) > 0
+  #   message:   must not be empty
   # path: tags
   #   condition: length(value) <= 50
   #   message:   [from tags.Validate: invalid when len(value) > 50]
